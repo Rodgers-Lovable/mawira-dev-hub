@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import SEOHead from "@/components/SEOHead";
 import { SITE_NAME, CONTACT } from "@/data/constants";
-import brianPortrait from "@/assets/brian-portrait.jpg";
+import brianPortrait from "@/assets/brian-potrait2.png";
 import aboutBackground from "@/assets/about-background.jpg";
 import coffeeFun from "@/assets/coffee-code-fun.jpg";
 

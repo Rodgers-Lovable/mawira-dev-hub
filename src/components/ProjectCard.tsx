@@ -79,7 +79,7 @@ const ProjectCard = ({ project, featured = false }: ProjectCardProps) => {
 
         {/* CTA for similar work */}
         <div className="border-t pt-4 mt-4">
-          <Button asChild variant="ghost" size="sm" className="w-full text-xs">
+          <Button asChild variant="ghost" size="sm" className="w-full text-xs bg-black/5">
             <a href="/contact">
               Work with me on something similar
             </a>

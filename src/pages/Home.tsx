@@ -7,7 +7,7 @@ import ServiceCard from "@/components/ServiceCard";
 import { SITE_NAME, SITE_TAGLINE, CONTACT } from "@/data/constants";
 import { projects } from "@/data/projects";
 import { services } from "@/data/services";
-import brianPortrait from "@/assets/brian-portrait.jpg";
+import brianPortrait from "@/assets/brian-potrait.png";
 import techStackVisual from "@/assets/tech-stack-visual.jpg";
 
 const Home = () => {
@@ -42,7 +42,7 @@ const Home = () => {
                   <Button asChild variant="secondary" size="lg" className="text-lg px-8 py-3">
                     <Link to="/portfolio">View My Work</Link>
                   </Button>
-                  <Button asChild variant="outline" size="lg" className="text-lg px-8 py-3 border-white/30 text-white hover:bg-white/10">
+                  <Button asChild variant="outline" size="lg" className="text-lg px-8 py-3 border-white/30 bg-white/10 text-white hover:bg-white/10">
                     <Link to="/contact">Let's Talk</Link>
                   </Button>
                 </div>
