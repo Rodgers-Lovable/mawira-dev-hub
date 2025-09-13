@@ -5,6 +5,7 @@ export interface Service {
   keywords: string[];
   icon: string;
   pricing?: string;
+  image?: string;
 }
 
 export const services: Service[] = [
@@ -14,7 +15,8 @@ export const services: Service[] = [
     description: "Build robust, scalable REST and GraphQL APIs with proper authentication, documentation, and testing. Perfect for connecting your applications and services.",
     keywords: ["REST API", "GraphQL", "Node.js", "authentication", "documentation"],
     icon: "🔌",
-    pricing: "From $800"
+    pricing: "From $800",
+    image: "/src/assets/api-development-icon.jpg"
   },
   {
     id: "mobile-apps",
@@ -22,7 +24,8 @@ export const services: Service[] = [
     description: "Cross-platform mobile applications using Flutter that work seamlessly on iOS and Android. Offline-first architecture with beautiful, native-feeling UI.",
     keywords: ["Flutter", "cross-platform", "iOS", "Android", "offline-first"],
     icon: "📱",
-    pricing: "From $1,200"
+    pricing: "From $1,200",
+    image: "/src/assets/mobile-development-icon.jpg"
   },
   {
     id: "web-applications",
@@ -30,7 +33,8 @@ export const services: Service[] = [
     description: "Modern, responsive web applications using React, Vue.js, or vanilla JavaScript. Focus on performance, SEO, and user experience.",
     keywords: ["React", "Vue.js", "responsive design", "SEO", "performance"],
     icon: "🌐",
-    pricing: "From $600"
+    pricing: "From $600",
+    image: "/src/assets/web-development-icon.jpg"
   },
   {
     id: "database-design",

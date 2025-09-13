@@ -2,6 +2,9 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import SEOHead from "@/components/SEOHead";
 import { SITE_NAME, CONTACT } from "@/data/constants";
+import brianPortrait from "@/assets/brian-portrait.jpg";
+import aboutBackground from "@/assets/about-background.jpg";
+import coffeeFun from "@/assets/coffee-code-fun.jpg";
 
 const About = () => {
   return (
@@ -13,15 +16,30 @@ const About = () => {
       />
 
       {/* Hero Section */}
-      <section className="py-16 lg:py-24 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl lg:text-5xl font-inter font-bold text-foreground mb-6">
-              About {SITE_NAME}
-            </h1>
-            <p className="text-xl text-muted-foreground leading-relaxed">
-              A passionate software engineer turning ideas into reliable, scalable solutions
-            </p>
+      <section className="relative py-16 lg:py-24 overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
+          style={{ backgroundImage: `url(${aboutBackground})` }}
+        />
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div>
+                <h1 className="text-4xl lg:text-5xl font-inter font-bold text-foreground mb-6">
+                  About <span className="text-primary">{SITE_NAME}</span>
+                </h1>
+                <p className="text-xl text-muted-foreground leading-relaxed">
+                  A passionate software engineer turning ideas into reliable, scalable solutions
+                </p>
+              </div>
+              <div className="flex justify-center lg:justify-end">
+                <img 
+                  src={brianPortrait} 
+                  alt="Brian Mawira - Software Engineer Portrait" 
+                  className="w-80 h-80 object-cover rounded-2xl shadow-hero border border-border"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -114,6 +132,21 @@ const About = () => {
             <h2 className="text-3xl font-inter font-bold text-foreground text-center mb-12">
               Fun Facts About Me
             </h2>
+            
+            {/* Fun Visual Element */}
+            <div className="text-center mb-12">
+              <div className="inline-block">
+                <img 
+                  src={coffeeFun} 
+                  alt="Coffee and code - the developer's perfect combination" 
+                  className="w-64 h-64 object-cover rounded-2xl shadow-card mx-auto mb-4"
+                />
+                <p className="text-sm text-muted-foreground italic">
+                  "Code compiles better with coffee ☕"
+                </p>
+              </div>
+            </div>
+            
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <Card className="card-gradient shadow-card">
                 <CardContent className="p-6">

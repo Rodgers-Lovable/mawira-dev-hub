@@ -7,6 +7,8 @@ import ServiceCard from "@/components/ServiceCard";
 import { SITE_NAME, SITE_TAGLINE, CONTACT } from "@/data/constants";
 import { projects } from "@/data/projects";
 import { services } from "@/data/services";
+import brianPortrait from "@/assets/brian-portrait.jpg";
+import techStackVisual from "@/assets/tech-stack-visual.jpg";
 
 const Home = () => {
   const featuredProjects = projects.filter(project => project.featured).slice(0, 3);
@@ -23,24 +25,40 @@ const Home = () => {
       {/* Hero Section */}
       <section className="relative py-20 lg:py-32 hero-gradient overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center text-white">
-            <h1 className="text-4xl lg:text-6xl font-inter font-bold mb-6">
-              Hi, I'm <span className="text-yellow-300">{SITE_NAME}</span>
-            </h1>
-            <p className="text-xl lg:text-2xl mb-8 text-white/90">
-              {SITE_TAGLINE}
-            </p>
-            <p className="text-lg mb-12 text-white/80 max-w-2xl mx-auto leading-relaxed">
-              I turn complex problems into elegant solutions. From scalable APIs to beautiful mobile apps, 
-              I help businesses grow with reliable, maintainable code.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild variant="secondary" size="lg" className="text-lg px-8 py-3">
-                <Link to="/portfolio">View My Work</Link>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="text-lg px-8 py-3 border-white/30 text-white hover:bg-white/10">
-                <Link to="/contact">Let's Talk</Link>
-              </Button>
+          <div className="max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div className="text-white">
+                <h1 className="text-4xl lg:text-6xl font-inter font-bold mb-6">
+                  Hi, I'm <span className="text-yellow-300">{SITE_NAME}</span>
+                </h1>
+                <p className="text-xl lg:text-2xl mb-8 text-white/90">
+                  {SITE_TAGLINE}
+                </p>
+                <p className="text-lg mb-12 text-white/80 leading-relaxed">
+                  I turn complex problems into elegant solutions. From scalable APIs to beautiful mobile apps, 
+                  I help businesses grow with reliable, maintainable code.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Button asChild variant="secondary" size="lg" className="text-lg px-8 py-3">
+                    <Link to="/portfolio">View My Work</Link>
+                  </Button>
+                  <Button asChild variant="outline" size="lg" className="text-lg px-8 py-3 border-white/30 text-white hover:bg-white/10">
+                    <Link to="/contact">Let's Talk</Link>
+                  </Button>
+                </div>
+              </div>
+              <div className="flex justify-center lg:justify-end">
+                <div className="relative">
+                  <img 
+                    src={brianPortrait} 
+                    alt="Brian Mawira - Software Engineer" 
+                    className="w-80 h-80 object-cover rounded-full shadow-hero border-4 border-white/20"
+                  />
+                  <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white text-2xl">
+                    👨‍💻
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -106,7 +124,20 @@ const Home = () => {
               <ServiceCard key={service.id} service={service} />
             ))}
           </div>
-          <div className="text-center">
+          
+          {/* Tech Stack Visual */}
+          <div className="mt-16 text-center">
+            <h3 className="text-2xl font-inter font-bold text-foreground mb-8">Technologies I Work With</h3>
+            <div className="flex justify-center">
+              <img 
+                src={techStackVisual} 
+                alt="Technology stack including React, Node.js, Flutter, MongoDB, PostgreSQL" 
+                className="max-w-2xl w-full h-auto rounded-lg shadow-card"
+              />
+            </div>
+          </div>
+          
+          <div className="text-center mt-12">
             <Button asChild variant="outline">
               <Link to="/services">All Services</Link>
             </Button>

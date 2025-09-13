@@ -9,6 +9,8 @@ import SEOHead from "@/components/SEOHead";
 import FAQSection from "@/components/FAQSection";
 import { CONTACT } from "@/data/constants";
 import { useToast } from "@/components/ui/use-toast";
+import contactBackground from "@/assets/contact-background.jpg";
+import coffeeFun from "@/assets/coffee-code-fun.jpg";
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -40,8 +42,12 @@ const Contact = () => {
       />
 
       {/* Hero Section */}
-      <section className="py-16 lg:py-24 bg-background">
-        <div className="container mx-auto px-4">
+      <section className="relative py-16 lg:py-24 overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
+          style={{ backgroundImage: `url(${contactBackground})` }}
+        />
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl lg:text-5xl font-inter font-bold text-foreground mb-6">
               Let's Build Something Amazing
@@ -227,6 +233,18 @@ const Contact = () => {
               <h2 className="text-3xl font-inter font-bold text-foreground mb-6">
                 What Happens After You Click Send? 📬
               </h2>
+              
+              {/* Fun Visual Element */}
+              <div className="mb-8">
+                <img 
+                  src={coffeeFun} 
+                  alt="What happens after you click send - coffee and code time" 
+                  className="w-48 h-48 object-cover rounded-full mx-auto shadow-card"
+                />
+                <p className="text-sm text-muted-foreground mt-4 italic">
+                  "I get excited, grab fresh coffee, and start thinking about your project ☕"
+                </p>
+              </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
