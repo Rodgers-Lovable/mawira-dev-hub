@@ -78,10 +78,10 @@ const Footer = () => {
         <div className="border-t border-border mt-8 pt-8">
           <div className="flex flex-col md:flex-row items-center justify-between">
             <p className="text-muted-foreground text-sm">
-              © {currentYear} {SITE_NAME}. All rights reserved.
+              © {currentYear} <span className="text-primary">{SITE_NAME}</span>. All rights reserved.
             </p>
             <p className="text-muted-foreground text-sm mt-2 md:mt-0">
-              Built with React, TypeScript & Tailwind CSS
+              Built with NextJS, TypeScript & Tailwind CSS
             </p>
           </div>
         </div>
