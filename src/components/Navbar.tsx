@@ -12,7 +12,10 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" className="text-xl font-inter font-bold text-foreground hover:text-primary transition-smooth">
+          <Link
+            to="/"
+            className="text-xl font-inter font-bold text-foreground hover:text-primary transition-smooth"
+          >
             {SITE_NAME}
           </Link>
 
@@ -31,10 +34,16 @@ const Navbar = () => {
                 {item.name}
               </Link>
             ))}
-            <Button asChild variant="default" size="sm">
-              <Link to="/contact">Get In Touch</Link>
-            </Button>
           </div>
+
+          <Button
+            asChild
+            variant="default"
+            size="sm"
+            className="hidden md:flex"
+          >
+            <Link to="/contact">Get In Touch</Link>
+          </Button>
 
           {/* Mobile Menu Button */}
           <button
@@ -42,8 +51,48 @@ const Navbar = () => {
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            <svg
+              className={`w-6 h-6 ${isMenuOpen && "hidden"}`}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+
+            <svg
+              className={`w-6 h-6 ${!isMenuOpen && "hidden"}`}
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              stroke="#17ec13"
+            >
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g
+                id="SVGRepo_tracerCarrier"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></g>
+              <g id="SVGRepo_iconCarrier">
+                {" "}
+                <path
+                  opacity="0.5"
+                  d="M2 12C2 7.28595 2 4.92893 3.46447 3.46447C4.92893 2 7.28595 2 12 2C16.714 2 19.0711 2 20.5355 3.46447C22 4.92893 22 7.28595 22 12C22 16.714 22 19.0711 20.5355 20.5355C19.0711 22 16.714 22 12 22C7.28595 22 4.92893 22 3.46447 20.5355C2 19.0711 2 16.714 2 12Z"
+                  stroke="#000000"
+                  stroke-width="1.5"
+                ></path>{" "}
+                <path
+                  d="M14.5 9.50002L9.5 14.5M9.49998 9.5L14.5 14.5"
+                  stroke="#000000"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                ></path>{" "}
+              </g>
             </svg>
           </button>
         </div>

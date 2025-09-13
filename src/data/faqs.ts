@@ -13,57 +13,69 @@ export const faqs: FAQ[] = [
     tags: ["services", "contact"]
   },
   {
-    id: "offline-apps",
-    question: "Can you build apps that work offline?",
-    answer: "Absolutely — I specialize in Flutter offline-first apps using GetStorage and local databases. Your users stay productive even without internet.",
-    tags: ["portfolio", "services"]
-  },
-  {
-    id: "response-time",
-    question: "What happens after I send a contact form?",
-    answer: "I reply within 24-48 hours (unless I'm debugging at 3 AM 🐛). You'll get a detailed response about your project requirements.",
-    tags: ["contact"]
-  },
-  {
-    id: "project-timeline",
-    question: "How long do projects typically take?",
-    answer: "It depends on complexity: Simple web apps (2-4 weeks), Mobile apps (4-8 weeks), Complex systems (8-16 weeks). I always provide realistic timelines upfront.",
+    id: "tech-stack",
+    question: "What technologies do you specialize in?",
+    answer: "My main stack includes Node.js, TypeScript, Express, PostgreSQL, MongoDB, Flutter, and WordPress. But I’m also flexible and can pick up new tools quickly when needed.",
     tags: ["services", "portfolio"]
   },
   {
-    id: "technology-stack",
-    question: "What technologies do you specialize in?",
-    answer: "My sweet spot is Node.js APIs, Flutter mobile apps, and React/Vue web applications. I also work with Python, databases, and cloud platforms.",
-    tags: ["portfolio", "services"]
+    id: "project-process",
+    question: "What does your project process look like?",
+    answer: "I usually start with understanding your needs, draft a plan, set milestones, and keep communication open with regular updates. Transparency and collaboration are key.",
+    tags: ["services"]
   },
   {
-    id: "maintenance-support",
-    question: "Do you provide ongoing support after project completion?",
-    answer: "Yes! I offer maintenance packages starting from $300/month. This includes bug fixes, security updates, and minor feature additions.",
+    id: "freelance-vs-fulltime",
+    question: "Are you open to freelance or full-time opportunities?",
+    answer: "Both! I love freelance projects for the variety and challenges, but I’m also open to impactful long-term roles where I can grow with a team.",
+    tags: ["about", "contact"]
+  },
+  {
+    id: "pricing-model",
+    question: "How do you price your services?",
+    answer: "It depends on the project scope. I usually offer project-based pricing for websites and apps, and hourly/daily rates for consulting or ongoing support.",
     tags: ["services", "contact"]
   },
   {
-    id: "pricing-structure",
-    question: "How do you structure your pricing?",
-    answer: "I offer both fixed-price projects and hourly consulting. After understanding your requirements, I'll provide a detailed quote with milestones.",
-    tags: ["services", "contact"]
-  },
-  {
-    id: "remote-work",
-    question: "Do you work remotely or on-site?",
-    answer: "I primarily work remotely using tools like Slack, Zoom, and GitHub. For Nairobi-based clients, I can arrange occasional in-person meetings.",
-    tags: ["services", "contact"]
-  },
-  {
-    id: "project-examples",
-    question: "Can you show examples of your previous work?",
-    answer: "Check out my portfolio section! I've built e-commerce APIs handling 10K+ daily transactions, mobile apps with 4.8-star ratings, and analytics dashboards.",
+    id: "portfolio-size",
+    question: "Where can I see your past work?",
+    answer: "Check out my Portfolio page — I’ve organized projects by categories like Websites, SaaS & APIs, and Mobile Apps so you can browse easily.",
     tags: ["portfolio"]
   },
   {
-    id: "api-documentation",
-    question: "Do you provide API documentation?",
-    answer: "Always! I use tools like Swagger/OpenAPI to create comprehensive, interactive documentation. Your team will know exactly how to use the APIs.",
-    tags: ["portfolio", "services"]
+    id: "turnaround-time",
+    question: "How long does it take to build a website or app?",
+    answer: "Depends on the complexity. A small business website might take 2–3 weeks, while a full SaaS platform could take months. I’ll always give you a realistic timeline upfront.",
+    tags: ["services", "portfolio"]
+  },
+  {
+    id: "after-launch-support",
+    question: "Do you provide support after project launch?",
+    answer: "Yes — I can help with maintenance, updates, and scaling. I don’t just launch and disappear 🚀.",
+    tags: ["services", "contact"]
+  },
+  {
+    id: "coffee-energy",
+    question: "What keeps you energized while coding?",
+    answer: "Coffee ☕, lots of it. And sometimes blasting Afrobeat or Lo-Fi while debugging helps too.",
+    tags: ["about"]
+  },
+  {
+    id: "why-software",
+    question: "Why did you choose software engineering?",
+    answer: "Because solving problems with code feels like having superpowers 🦸🏽‍♂️. Plus, I enjoy building things that make people’s lives easier.",
+    tags: ["about"]
+  },
+  {
+    id: "collaboration-tools",
+    question: "How do you collaborate with teams remotely?",
+    answer: "I use tools like Slack, Zoom, GitHub, Trello, and Notion. Clear communication is just as important as clean code.",
+    tags: ["services", "contact"]
+  },
+  {
+    id: "fun-fact",
+    question: "Fun fact about you?",
+    answer: "I can explain complex backend logic with cow analogies 🐄 — thanks to working on livestock management apps like Boma360.",
+    tags: ["about"]
   }
-];
+]
