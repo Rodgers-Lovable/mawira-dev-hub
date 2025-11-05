@@ -10,12 +10,10 @@ import Portfolio from "./pages/Portfolio";
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
-import { usePlausible } from "./hooks/use-plausible";
 
 const queryClient = new QueryClient();
 
 const App = () => {
-  usePlausible('mawirab.com');
   
   return (
     <QueryClientProvider client={queryClient}>
