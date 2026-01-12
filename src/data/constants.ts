@@ -3,9 +3,10 @@ export const SITE_TAGLINE =
   "Software Engineer | Backend APIs | Mobile Apps | Web Solutions";
 
 export const CONTACT = {
-  email: "dev@mawirab.com",
+  email: "brianmawira2@gmail.com",
+  secondaryEmail: "dev@mawirab.com",
   phone: "+254 712 413 243",
-  linkedin: "https://linkedin.com/in/brianmawira",
+  linkedin: "https://linkedin.com/in/brian-mawira",
   github: "https://github.com/rodgersBRY",
   location: "Nairobi, Kenya (Available Worldwide 🌍)",
 };
