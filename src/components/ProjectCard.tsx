@@ -1,8 +1,8 @@
 import { Project } from "@/data/projects";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Github, FileText } from "lucide-react";
+import { ExternalLink, Github, FileText, Target, Wrench, Zap, TrendingUp } from "lucide-react";
 
 interface ProjectCardProps {
   project: Project;
@@ -14,9 +14,9 @@ const ProjectCard = ({ project, featured = false }: ProjectCardProps) => {
     <Card className={`h-full card-gradient shadow-card hover:shadow-hero transition-smooth hover-scale ${
       featured ? 'border-primary/20' : ''
     }`}>
-      <CardHeader>
+      <CardHeader className="pb-4">
         <div className="flex items-start justify-between mb-2">
-          <Badge variant="secondary" className="text-xs mb-2">
+          <Badge variant="secondary" className="text-xs">
             {project.category}
           </Badge>
           {featured && (
@@ -26,15 +26,38 @@ const ProjectCard = ({ project, featured = false }: ProjectCardProps) => {
           )}
         </div>
         <CardTitle className="text-xl font-inter">{project.title}</CardTitle>
-        <CardDescription className="text-muted-foreground">
-          {project.description}
-        </CardDescription>
       </CardHeader>
+      
       <CardContent className="space-y-4">
+        {/* Problem Section */}
+        <div className="space-y-2">
+          <div className="flex items-center gap-2 text-sm font-inter font-semibold text-foreground">
+            <Target className="w-4 h-4 text-destructive" />
+            <span>Problem</span>
+          </div>
+          <p className="text-sm text-muted-foreground leading-relaxed pl-6">
+            {project.problem}
+          </p>
+        </div>
+
+        {/* Approach Section */}
+        <div className="space-y-2">
+          <div className="flex items-center gap-2 text-sm font-inter font-semibold text-foreground">
+            <Wrench className="w-4 h-4 text-primary" />
+            <span>Approach</span>
+          </div>
+          <p className="text-sm text-muted-foreground leading-relaxed pl-6">
+            {project.solution}
+          </p>
+        </div>
+
         {/* Tech Stack */}
-        <div>
-          <h4 className="text-sm font-inter font-semibold mb-2 text-foreground">Tech Stack</h4>
-          <div className="flex flex-wrap gap-2">
+        <div className="space-y-2">
+          <div className="flex items-center gap-2 text-sm font-inter font-semibold text-foreground">
+            <Zap className="w-4 h-4 text-secondary" />
+            <span>Tech Stack</span>
+          </div>
+          <div className="flex flex-wrap gap-2 pl-6">
             {project.techStack.map((tech) => (
               <Badge key={tech} variant="outline" className="text-xs">
                 {tech}
@@ -43,14 +66,31 @@ const ProjectCard = ({ project, featured = false }: ProjectCardProps) => {
           </div>
         </div>
 
-        {/* Outcome */}
-        <div>
-          <h4 className="text-sm font-inter font-semibold mb-2 text-foreground">Impact</h4>
-          <p className="text-sm text-muted-foreground">{project.outcome}</p>
+        {/* Result/Impact */}
+        <div className="space-y-2">
+          <div className="flex items-center gap-2 text-sm font-inter font-semibold text-foreground">
+            <TrendingUp className="w-4 h-4 text-primary" />
+            <span>Result / Impact</span>
+          </div>
+          <p className="text-sm text-muted-foreground leading-relaxed pl-6">
+            {project.outcome}
+          </p>
+          {project.metrics && project.metrics.length > 0 && (
+            <div className="flex flex-wrap gap-2 pl-6 mt-2">
+              {project.metrics.map((metric, index) => (
+                <span 
+                  key={index} 
+                  className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full font-medium"
+                >
+                  {metric}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Actions */}
-        <div className="flex flex-wrap gap-2 pt-2">
+        <div className="flex flex-wrap gap-2 pt-4 border-t border-border">
           {project.liveUrl && (
             <Button asChild variant="default" size="sm">
               <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
@@ -78,10 +118,10 @@ const ProjectCard = ({ project, featured = false }: ProjectCardProps) => {
         </div>
 
         {/* CTA for similar work */}
-        <div className="border-t pt-4 mt-4">
-          <Button asChild variant="ghost" size="sm" className="w-full text-xs bg-black/5">
+        <div className="pt-4">
+          <Button asChild variant="ghost" size="sm" className="w-full text-xs bg-primary/5 hover:bg-primary/10">
             <a href="/contact">
-              Work with me on something similar
+              Discuss Similar Projects →
             </a>
           </Button>
         </div>

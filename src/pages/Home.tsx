@@ -4,6 +4,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import SEOHead from "@/components/SEOHead";
 import ProjectCard from "@/components/ProjectCard";
 import ServiceCard from "@/components/ServiceCard";
+import TestimonialsSection from "@/components/TestimonialsSection";
+import JsonLd from "@/components/JsonLd";
 import { SITE_NAME, SITE_TAGLINE, CONTACT } from "@/data/constants";
 import { projects } from "@/data/projects";
 import { services } from "@/data/services";
@@ -17,9 +19,25 @@ const Home = () => {
   return (
     <>
       <SEOHead 
-        title="Home"
-        description="Brian Mawira - Freelance Software Engineer in Kenya. Expert in APIs, mobile apps, and web development. Available worldwide."
-        keywords={["software engineer Kenya", "freelance developer", "API development", "Flutter apps"]}
+        title="Software Development Services – Scalable APIs, Web & Mobile Apps | Brian Mawira"
+        description="Freelance software engineer building scalable APIs, web applications and Flutter mobile apps for startups and organizations. Hire Brian Mawira."
+        keywords={["software engineer Kenya", "freelance developer", "API development", "Flutter apps", "web developer Kenya", "scalable APIs"]}
+      />
+
+      <JsonLd 
+        data={{
+          type: "Person",
+          name: "Brian Mawira",
+          jobTitle: "Freelance Software Engineer",
+          url: "https://brianmawira.dev",
+          email: CONTACT.email,
+          sameAs: [CONTACT.linkedin, CONTACT.github],
+          address: {
+            addressLocality: "Nairobi",
+            addressCountry: "Kenya"
+          },
+          knowsAbout: ["API Development", "Flutter", "React", "Node.js", "Mobile Apps", "Web Development"]
+        }}
       />
 
       {/* Hero Section */}
@@ -77,8 +95,8 @@ const Home = () => {
               that don't just look good in demos — they perform in the real world. Whether it's an API handling 
               thousands of requests or a mobile app that works offline, I focus on reliability and user experience.
             </p>
-            <Button asChild variant="outline">
-              <Link to="/about">Learn More About Me</Link>
+            <Button asChild variant="default">
+              <Link to="/about">See How I Can Help You</Link>
             </Button>
           </div>
         </div>
@@ -88,23 +106,26 @@ const Home = () => {
       <section className="py-16 bg-muted/50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-inter font-bold text-foreground mb-4">Featured Projects</h2>
+            <h2 className="text-3xl font-inter font-bold text-foreground mb-4">Featured Case Studies</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Here are some projects I'm particularly proud of. Each one solved real problems for real people.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {featuredProjects.map((project) => (
-              <ProjectCard key={project.id} project={project} />
+              <ProjectCard key={project.id} project={project} featured />
             ))}
           </div>
           <div className="text-center">
             <Button asChild variant="default">
-              <Link to="/portfolio">View All Projects</Link>
+              <Link to="/portfolio">View All Case Studies</Link>
             </Button>
           </div>
         </div>
       </section>
+
+      {/* Testimonials Section */}
+      <TestimonialsSection maxCount={3} />
 
       {/* Services Preview */}
       <section className="py-16 bg-background">
@@ -134,8 +155,8 @@ const Home = () => {
           </div>
           
           <div className="text-center mt-12">
-            <Button asChild variant="outline">
-              <Link to="/services">All Services</Link>
+            <Button asChild variant="default">
+              <Link to="/services">Get Your Custom Quote</Link>
             </Button>
           </div>
         </div>
@@ -194,7 +215,7 @@ const Home = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild variant="default" size="lg">
-                <Link to="/contact">Start a Conversation</Link>
+                <Link to="/contact">Discuss Your Project</Link>
               </Button>
               <Button asChild variant="outline" size="lg">
                 <a href={`mailto:${CONTACT.email}`}>
