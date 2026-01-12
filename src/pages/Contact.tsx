@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -11,28 +11,62 @@ import CalendlyEmbed from "@/components/CalendlyEmbed";
 import JsonLd from "@/components/JsonLd";
 import { CONTACT } from "@/data/constants";
 import { useToast } from "@/components/ui/use-toast";
+import { initEmailJS, sendContactEmail, isEmailJSConfigured } from "@/lib/emailjs";
 import contactBackground from "@/assets/contact-background.jpg";
 import coffeeFun from "@/assets/coffee-code-fun.jpg";
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [selectedService, setSelectedService] = useState("");
   const { toast } = useToast();
+
+  // Initialize EmailJS on component mount
+  useEffect(() => {
+    initEmailJS();
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission (EmailJS integration would go here)
-    setTimeout(() => {
-      setIsSubmitting(false);
+    const formData = new FormData(e.currentTarget);
+    const contactData = {
+      name: formData.get('name') as string,
+      email: formData.get('email') as string,
+      service: selectedService,
+      message: formData.get('message') as string,
+    };
+
+    try {
+      const result = await sendContactEmail(contactData);
+
+      if (result.success) {
+        toast({
+          title: "Message sent! 🚀",
+          description: isEmailJSConfigured() 
+            ? "I'll get back to you within 24-48 hours!"
+            : "Demo mode - EmailJS not configured yet. Add your credentials to enable real emails.",
+        });
+        
+        // Reset form
+        (e.currentTarget as HTMLFormElement).reset();
+        setSelectedService("");
+      } else {
+        toast({
+          title: "Failed to send message",
+          description: result.message,
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
       toast({
-        title: "Message sent! 🚀",
-        description: "Now I'll pretend I'm not refreshing my inbox every 5 seconds. I'll get back to you within 24-48 hours!",
+        title: "Error",
+        description: "Something went wrong. Please try again or email directly.",
+        variant: "destructive",
       });
-      
-      // Reset form
-      (e.target as HTMLFormElement).reset();
-    }, 1000);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -121,7 +155,7 @@ const Contact = () => {
 
                   <div>
                     <Label htmlFor="service">Service Type</Label>
-                    <Select name="service">
+                    <Select value={selectedService} onValueChange={setSelectedService}>
                       <SelectTrigger className="mt-1">
                         <SelectValue placeholder="What do you need help with?" />
                       </SelectTrigger>
