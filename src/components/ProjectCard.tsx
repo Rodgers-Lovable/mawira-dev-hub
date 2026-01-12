@@ -1,8 +1,11 @@
+import { useEffect, useRef, useState } from "react";
 import { Project } from "@/data/projects";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Github, FileText, Target, Wrench, Zap, TrendingUp } from "lucide-react";
+import { TrackedExternalLink } from "./TrackedLink";
+import { trackPortfolioView, trackCTAClick, trackExternalEngagement } from "@/lib/analytics";
 
 interface ProjectCardProps {
   project: Project;
@@ -10,10 +13,54 @@ interface ProjectCardProps {
 }
 
 const ProjectCard = ({ project, featured = false }: ProjectCardProps) => {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [hasTracked, setHasTracked] = useState(false);
+
+  // Track portfolio view when card becomes visible
+  useEffect(() => {
+    const element = cardRef.current;
+    if (!element) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasTracked) {
+            trackPortfolioView(project.title, project.category);
+            setHasTracked(true);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    observer.observe(element);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [project.title, project.category, hasTracked]);
+
+  const handleCTAClick = () => {
+    trackCTAClick(`Discuss Similar Projects - ${project.title}`);
+  };
+
+  const handleLiveClick = () => {
+    trackCTAClick(`View Live - ${project.title}`);
+  };
+
+  const handleGitHubClick = () => {
+    trackExternalEngagement('github');
+    trackCTAClick(`GitHub - ${project.title}`);
+  };
+
   return (
-    <Card className={`h-full card-gradient shadow-card hover:shadow-hero transition-smooth hover-scale ${
-      featured ? 'border-primary/20' : ''
-    }`}>
+    <Card 
+      ref={cardRef}
+      className={`h-full card-gradient shadow-card hover:shadow-hero transition-smooth hover-scale ${
+        featured ? 'border-primary/20' : ''
+      }`}
+      data-project={project.title}
+    >
       <CardHeader className="pb-4">
         <div className="flex items-start justify-between mb-2">
           <Badge variant="secondary" className="text-xs">
@@ -92,7 +139,7 @@ const ProjectCard = ({ project, featured = false }: ProjectCardProps) => {
         {/* Actions */}
         <div className="flex flex-wrap gap-2 pt-4 border-t border-border">
           {project.liveUrl && (
-            <Button asChild variant="default" size="sm">
+            <Button asChild variant="default" size="sm" onClick={handleLiveClick}>
               <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
                 <ExternalLink className="w-4 h-4" />
                 View Live
@@ -100,11 +147,11 @@ const ProjectCard = ({ project, featured = false }: ProjectCardProps) => {
             </Button>
           )}
           {project.githubUrl && (
-            <Button asChild variant="outline" size="sm">
-              <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+            <Button asChild variant="outline" size="sm" onClick={handleGitHubClick}>
+              <TrackedExternalLink href={project.githubUrl} platform="github">
                 <Github className="w-4 h-4" />
                 GitHub
-              </a>
+              </TrackedExternalLink>
             </Button>
           )}
           {project.caseStudyUrl && (
@@ -119,7 +166,7 @@ const ProjectCard = ({ project, featured = false }: ProjectCardProps) => {
 
         {/* CTA for similar work */}
         <div className="pt-4">
-          <Button asChild variant="ghost" size="sm" className="w-full text-xs bg-primary/5 hover:bg-primary/10">
+          <Button asChild variant="ghost" size="sm" className="w-full text-xs bg-primary/5 hover:bg-primary/10" onClick={handleCTAClick}>
             <a href="/contact">
               Discuss Similar Projects →
             </a>
