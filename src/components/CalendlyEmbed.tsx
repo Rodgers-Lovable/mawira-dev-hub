@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Calendar, Clock, Video } from "lucide-react";
+import { trackContactAttempt, trackCTAClick } from "@/lib/analytics";
 
 interface CalendlyEmbedProps {
   calendlyUrl?: string;
@@ -25,6 +26,10 @@ const CalendlyEmbed = ({ calendlyUrl = "https://calendly.com/brianmawira" }: Cal
   }, []);
 
   const openCalendly = () => {
+    // Track the Calendly interaction
+    trackContactAttempt('calendly');
+    trackCTAClick('Book Consultation');
+
     // @ts-ignore - Calendly is loaded externally
     if (window.Calendly) {
       // @ts-ignore

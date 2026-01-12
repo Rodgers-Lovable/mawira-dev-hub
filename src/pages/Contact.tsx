@@ -9,9 +9,13 @@ import SEOHead from "@/components/SEOHead";
 import FAQSection from "@/components/FAQSection";
 import CalendlyEmbed from "@/components/CalendlyEmbed";
 import JsonLd from "@/components/JsonLd";
+import TrackedSection from "@/components/TrackedSection";
+import { TrackedExternalLink } from "@/components/TrackedLink";
 import { CONTACT } from "@/data/constants";
 import { useToast } from "@/components/ui/use-toast";
 import { initEmailJS, sendContactEmail, isEmailJSConfigured } from "@/lib/emailjs";
+import { useContactTracking, useCTATracking } from "@/hooks/useAnalytics";
+import { trackExternalEngagement } from "@/lib/analytics";
 import contactBackground from "@/assets/contact-background.jpg";
 import coffeeFun from "@/assets/coffee-code-fun.jpg";
 
@@ -19,6 +23,8 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [selectedService, setSelectedService] = useState("");
   const { toast } = useToast();
+  const { trackAttempt, trackSubmission } = useContactTracking();
+  const { trackCTA } = useCTATracking();
 
   // Initialize EmailJS on component mount
   useEffect(() => {
@@ -28,6 +34,9 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
+
+    // Track form submission attempt
+    trackAttempt('form');
 
     const formData = new FormData(e.currentTarget);
     const contactData = {
@@ -41,6 +50,9 @@ const Contact = () => {
       const result = await sendContactEmail(contactData);
 
       if (result.success) {
+        // Track successful submission
+        trackSubmission('contact');
+
         toast({
           title: "Message sent! 🚀",
           description: isEmailJSConfigured() 
@@ -67,6 +79,20 @@ const Contact = () => {
     } finally {
       setIsSubmitting(false);
     }
+  };
+
+  const handleEmailClick = () => {
+    trackAttempt('email');
+    trackExternalEngagement('email');
+  };
+
+  const handleLinkedInClick = () => {
+    trackExternalEngagement('linkedin');
+    trackCTA('Connect on LinkedIn');
+  };
+
+  const handleGitHubClick = () => {
+    trackExternalEngagement('github');
   };
 
   return (
@@ -208,6 +234,7 @@ const Contact = () => {
                       <p className="font-medium text-foreground">Email</p>
                       <a 
                         href={`mailto:${CONTACT.email}`}
+                        onClick={handleEmailClick}
                         className="text-primary hover:text-primary/80 transition-smooth"
                       >
                         {CONTACT.email}
@@ -219,14 +246,13 @@ const Contact = () => {
                     <div className="text-2xl">💼</div>
                     <div>
                       <p className="font-medium text-foreground">LinkedIn</p>
-                      <a 
+                      <TrackedExternalLink
                         href={CONTACT.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        platform="linkedin"
                         className="text-primary hover:text-primary/80 transition-smooth"
                       >
                         Connect with me
-                      </a>
+                      </TrackedExternalLink>
                     </div>
                   </div>
 
@@ -234,14 +260,13 @@ const Contact = () => {
                     <div className="text-2xl">🐙</div>
                     <div>
                       <p className="font-medium text-foreground">GitHub</p>
-                      <a 
+                      <TrackedExternalLink
                         href={CONTACT.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        platform="github"
                         className="text-primary hover:text-primary/80 transition-smooth"
                       >
                         View my code
-                      </a>
+                      </TrackedExternalLink>
                     </div>
                   </div>
 
@@ -366,15 +391,15 @@ const Contact = () => {
               without any commitment. Sometimes a 15-minute conversation can save hours of development time.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild variant="outline" size="lg">
+              <Button asChild variant="outline" size="lg" onClick={() => { trackCTA('Ask Quick Question'); handleEmailClick(); }}>
                 <a href={`mailto:${CONTACT.email}?subject=Quick Question`}>
                   Ask a Quick Question
                 </a>
               </Button>
-              <Button asChild variant="outline" size="lg">
-                <a href={CONTACT.linkedin} target="_blank" rel="noopener noreferrer">
+              <Button asChild variant="outline" size="lg" onClick={handleLinkedInClick}>
+                <TrackedExternalLink href={CONTACT.linkedin} platform="linkedin" ctaLabel="Connect on LinkedIn">
                   Connect on LinkedIn
-                </a>
+                </TrackedExternalLink>
               </Button>
             </div>
           </div>
