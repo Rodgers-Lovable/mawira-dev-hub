@@ -7,6 +7,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import SEOHead from "@/components/SEOHead";
 import FAQSection from "@/components/FAQSection";
+import CalendlyEmbed from "@/components/CalendlyEmbed";
+import JsonLd from "@/components/JsonLd";
 import { CONTACT } from "@/data/constants";
 import { useToast } from "@/components/ui/use-toast";
 import contactBackground from "@/assets/contact-background.jpg";
@@ -37,8 +39,21 @@ const Contact = () => {
     <>
       <SEOHead 
         title="Contact Brian Mawira - Hire Freelance Software Engineer"
-        description="Get in touch with Brian Mawira for your software development needs. Available worldwide for API development, mobile apps, and web solutions."
-        keywords={["contact Brian Mawira", "hire software engineer", "freelance developer Kenya", "get quote"]}
+        description="Get in touch with Brian Mawira for your software development needs. Book a free consultation or send a message. Available worldwide."
+        keywords={["contact Brian Mawira", "hire software engineer", "freelance developer Kenya", "get quote", "book consultation"]}
+      />
+
+      <JsonLd 
+        data={{
+          type: "WebPage",
+          name: "Contact Brian Mawira",
+          description: "Get in touch for software development projects",
+          url: "https://brianmawira.dev/contact",
+          author: {
+            name: "Brian Mawira",
+            url: "https://brianmawira.dev"
+          }
+        }}
       />
 
       {/* Hero Section */}
@@ -50,23 +65,33 @@ const Contact = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl lg:text-5xl font-inter font-bold text-foreground mb-6">
-              Let's Build Something Amazing
+              Let's Talk About Your Project
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed">
-              Have a project in mind? I'd love to hear about it. Let's discuss how we can bring your ideas to life.
+              Have a project in mind? I'd love to hear about it. Book a free consultation or send me a message below.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Contact Form & Info */}
+      {/* Calendly Booking Section */}
       <section className="py-16 bg-muted/50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-lg mx-auto">
+            <CalendlyEmbed />
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Form & Info */}
+      <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
             <Card className="card-gradient shadow-card">
               <CardHeader>
-                <CardTitle className="text-2xl font-inter">Send Me a Message</CardTitle>
+                <CardTitle className="text-2xl font-inter">Let's Talk About Your Project</CardTitle>
+                <p className="text-muted-foreground">Fill out the form below and I'll get back to you within 24-48 hours.</p>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-6">
@@ -113,7 +138,7 @@ const Contact = () => {
                   </div>
 
                   <div>
-                    <Label htmlFor="message">Message *</Label>
+                    <Label htmlFor="message">Project Brief *</Label>
                     <Textarea 
                       id="message" 
                       name="message" 
@@ -226,7 +251,7 @@ const Contact = () => {
       </section>
 
       {/* What Happens Next */}
-      <section className="py-16 bg-background">
+      <section className="py-16 bg-muted/50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">

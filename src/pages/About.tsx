@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import SEOHead from "@/components/SEOHead";
+import JsonLd from "@/components/JsonLd";
 import { SITE_NAME, CONTACT } from "@/data/constants";
 import brianPortrait from "@/assets/brian-potrait2.png";
 import aboutBackground from "@/assets/about-background.jpg";
@@ -10,9 +11,25 @@ const About = () => {
   return (
     <>
       <SEOHead 
-        title="About Brian Mawira"
-        description="Learn about Brian Mawira, a passionate software engineer from Kenya specializing in APIs, mobile apps, and web development."
-        keywords={["about Brian Mawira", "software engineer background", "developer story"]}
+        title="About Brian Mawira - Freelance Software Engineer Kenya"
+        description="Learn about Brian Mawira, a passionate software engineer from Kenya specializing in APIs, mobile apps, and web development. Available for worldwide projects."
+        keywords={["about Brian Mawira", "software engineer background", "developer story", "Kenya developer"]}
+      />
+
+      <JsonLd 
+        data={{
+          type: "Person",
+          name: "Brian Mawira",
+          jobTitle: "Freelance Software Engineer",
+          url: "https://brianmawira.dev/about",
+          email: CONTACT.email,
+          sameAs: [CONTACT.linkedin, CONTACT.github],
+          address: {
+            addressLocality: "Nairobi",
+            addressCountry: "Kenya"
+          },
+          knowsAbout: ["API Development", "Flutter", "React", "Node.js", "Mobile Apps", "Web Development"]
+        }}
       />
 
       {/* Hero Section */}
@@ -70,6 +87,12 @@ const About = () => {
                 </div>
               </CardContent>
             </Card>
+
+            <div className="text-center mt-8">
+              <Button asChild variant="default">
+                <a href="/portfolio">See How I Can Help You</a>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
@@ -120,6 +143,12 @@ const About = () => {
                   </ul>
                 </CardContent>
               </Card>
+            </div>
+
+            <div className="text-center mt-12">
+              <Button asChild variant="default">
+                <a href="/services">See How I Can Help You</a>
+              </Button>
             </div>
           </div>
         </div>
@@ -208,7 +237,7 @@ const About = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild variant="default" size="lg">
-                <a href={`mailto:${CONTACT.email}`}>Send Me an Email</a>
+                <a href="/contact">See How I Can Help You</a>
               </Button>
               <Button asChild variant="outline" size="lg">
                 <a href={CONTACT.linkedin} target="_blank" rel="noopener noreferrer">

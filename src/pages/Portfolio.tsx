@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import SEOHead from "@/components/SEOHead";
 import ProjectCard from "@/components/ProjectCard";
 import FAQSection from "@/components/FAQSection";
+import JsonLd from "@/components/JsonLd";
 import { projects, categories } from "@/data/projects";
 
 const Portfolio = () => {
@@ -18,9 +18,22 @@ const Portfolio = () => {
   return (
     <>
       <SEOHead 
-        title="Projects & Portfolio - Brian Mawira Software Engineer"
-        description="Explore the portfolio of Brian Mawira, a fullstack engineer building SaaS platforms, APIs, websites, and mobile apps for clients locally and abroad."
-        keywords={["Brian Mawira portfolio", "software projects", "SaaS platforms", "API development", "mobile apps", "web development Kenya"]}
+        title="Portfolio – Case Studies of API, Mobile & Web Projects"
+        description="Explore project case studies showing solutions, results and technologies used by freelance engineer Brian Mawira."
+        keywords={["Brian Mawira portfolio", "software projects", "SaaS platforms", "API development", "mobile apps", "web development Kenya", "case studies"]}
+      />
+
+      <JsonLd 
+        data={{
+          type: "WebPage",
+          name: "Portfolio - Brian Mawira",
+          description: "Case studies of API, mobile app, and web development projects",
+          url: "https://brianmawira.dev/portfolio",
+          author: {
+            name: "Brian Mawira",
+            url: "https://brianmawira.dev"
+          }
+        }}
       />
 
       {/* Hero Section */}
@@ -28,13 +41,13 @@ const Portfolio = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl lg:text-6xl font-inter font-bold text-foreground mb-6">
-              Projects That Tell My Story in <span className="text-primary">Code</span>
+              Case Studies That Show <span className="text-primary">Real Results</span>
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed mb-8 max-w-3xl mx-auto">
-              From SaaS platforms to websites and mobile apps — here's a curated collection of my work that showcases real solutions for real problems.
+              From SaaS platforms to websites and mobile apps — explore detailed case studies with problems solved, approaches taken, and measurable outcomes.
             </p>
             <Button asChild variant="default" size="lg">
-              <a href="/contact">Work With Me</a>
+              <a href="/contact">Discuss Similar Projects</a>
             </Button>
           </div>
         </div>
@@ -46,7 +59,7 @@ const Portfolio = () => {
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-3xl font-inter font-bold text-foreground mb-12 text-center">
-                Featured Projects
+                Featured Case Studies
               </h2>
               <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
                 {featuredProjects.map((project) => (
@@ -129,6 +142,12 @@ const Portfolio = () => {
               </div>
             ))}
           </div>
+
+          <div className="text-center mt-12">
+            <Button asChild variant="default">
+              <a href="/contact">Discuss Similar Projects</a>
+            </Button>
+          </div>
         </div>
       </section>
 
@@ -150,7 +169,7 @@ const Portfolio = () => {
               Ready to turn your ideas into reality? Let's discuss your project requirements and create something that makes a difference.
             </p>
             <Button asChild variant="default" size="lg">
-              <a href="/contact">Start a Conversation</a>
+              <a href="/contact">Discuss Similar Projects</a>
             </Button>
           </div>
         </div>

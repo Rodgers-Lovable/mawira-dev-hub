@@ -1,6 +1,7 @@
 import SEOHead from "@/components/SEOHead";
 import ServiceCard from "@/components/ServiceCard";
 import FAQSection from "@/components/FAQSection";
+import JsonLd from "@/components/JsonLd";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { services } from "@/data/services";
@@ -9,9 +10,23 @@ const Services = () => {
   return (
     <>
       <SEOHead 
-        title="Services - Software Development Services by Brian Mawira"
-        description="Professional software development services including API development, mobile apps, web applications, and technical consulting by Brian Mawira."
+        title="Software Development Services - APIs, Mobile Apps & Web Solutions"
+        description="Professional software development services including API development, Flutter mobile apps, web applications, and technical consulting by Brian Mawira."
         keywords={["software development services", "API development", "Flutter apps", "web development", "technical consulting"]}
+      />
+
+      <JsonLd 
+        data={{
+          type: "Service",
+          name: "Software Development Services",
+          description: "Professional API, mobile app, and web development services",
+          provider: {
+            name: "Brian Mawira",
+            url: "https://brianmawira.dev"
+          },
+          areaServed: "Worldwide",
+          serviceType: "Software Development"
+        }}
       />
 
       {/* Hero Section */}
@@ -30,7 +45,7 @@ const Services = () => {
                 <a href="/contact">Discuss Your Project</a>
               </Button>
               <Button asChild variant="outline" size="lg">
-                <a href="mailto:brian@brianmawira.dev">Get a Quote</a>
+                <a href="/contact">Get Your Custom Quote</a>
               </Button>
             </div>
           </div>
@@ -44,6 +59,12 @@ const Services = () => {
             {services.map((service) => (
               <ServiceCard key={service.id} service={service} />
             ))}
+          </div>
+          
+          <div className="text-center mt-12">
+            <Button asChild variant="default">
+              <a href="/contact">Get Your Custom Quote</a>
+            </Button>
           </div>
         </div>
       </section>
@@ -109,6 +130,12 @@ const Services = () => {
                   </p>
                 </CardContent>
               </Card>
+            </div>
+
+            <div className="text-center mt-12">
+              <Button asChild variant="default">
+                <a href="/contact">Get Your Custom Quote</a>
+              </Button>
             </div>
           </div>
         </div>
@@ -183,6 +210,12 @@ const Services = () => {
                 </div>
               </CardContent>
             </Card>
+
+            <div className="text-center mt-8">
+              <Button asChild variant="default" size="lg">
+                <a href="/contact">Get Your Custom Quote</a>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
@@ -199,7 +232,7 @@ const Services = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild variant="default" size="lg">
-                <a href="/contact">Start a Project</a>
+                <a href="/contact">Get Your Custom Quote</a>
               </Button>
               <Button asChild variant="outline" size="lg">
                 <a href="mailto:brian@brianmawira.dev">Ask a Question</a>
