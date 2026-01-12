@@ -28,22 +28,18 @@ const Home = () => {
           <div className="max-w-5xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div className="text-white">
-                <h1 className="text-4xl lg:text-6xl font-inter font-bold mb-6">
-                  Hi, I'm <span className="text-yellow-300">{SITE_NAME}</span>
+                <h1 className="text-4xl lg:text-5xl font-inter font-bold mb-6 leading-tight">
+                  I help startups & organizations build scalable APIs, web apps & mobile solutions that drive growth and solve real business problems.
                 </h1>
-                <p className="text-xl lg:text-2xl mb-8 text-white/90">
-                  {SITE_TAGLINE}
-                </p>
-                <p className="text-lg mb-12 text-white/80 leading-relaxed">
-                  I turn complex problems into elegant solutions. From scalable APIs to beautiful mobile apps, 
-                  I help businesses grow with reliable, maintainable code.
+                <p className="text-lg lg:text-xl mb-12 text-white/90 leading-relaxed">
+                  With experience in backend APIs, Flutter mobile apps, and scalable web platforms, I deliver reliable tech solutions that power real results.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Button asChild variant="secondary" size="lg" className="text-lg px-8 py-3">
-                    <Link to="/portfolio">View My Work</Link>
+                    <Link to="/contact">🟡 Discuss Your Project</Link>
                   </Button>
-                  <Button asChild variant="outline" size="lg" className="text-lg px-8 py-3 border-white/30 bg-white/10 text-white hover:bg-white/10">
-                    <Link to="/contact">Let's Talk</Link>
+                  <Button asChild variant="outline" size="lg" className="text-lg px-8 py-3 border-white/30 bg-white/10 text-white hover:bg-white/20">
+                    <Link to="/portfolio">View Case Studies</Link>
                   </Button>
                 </div>
               </div>
