@@ -1,8 +1,15 @@
 import { Link } from "react-router-dom";
+import { Shield } from "lucide-react";
 import { SITE_NAME, CONTACT, NAVIGATION } from "@/data/constants";
+import { TrackedExternalLink } from "./TrackedLink";
+import { trackExternalEngagement } from "@/lib/analytics";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+
+  const handleEmailClick = () => {
+    trackExternalEngagement('email');
+  };
 
   return (
     <footer className="bg-card border-t border-border">
@@ -50,38 +57,44 @@ const Footer = () => {
             <div className="space-y-3">
               <a
                 href={`mailto:${CONTACT.email}`}
+                onClick={handleEmailClick}
                 className="block text-muted-foreground hover:text-primary transition-smooth text-sm"
               >
                 {CONTACT.email}
               </a>
-              <a
+              <TrackedExternalLink
                 href={CONTACT.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
+                platform="linkedin"
                 className="block text-muted-foreground hover:text-primary transition-smooth text-sm"
               >
                 LinkedIn
-              </a>
-              <a
+              </TrackedExternalLink>
+              <TrackedExternalLink
                 href={CONTACT.github}
-                target="_blank"
-                rel="noopener noreferrer"
+                platform="github"
                 className="block text-muted-foreground hover:text-primary transition-smooth text-sm"
               >
                 GitHub
-              </a>
+              </TrackedExternalLink>
               <div className="text-muted-foreground text-sm">{CONTACT.location}</div>
             </div>
           </div>
         </div>
 
         <div className="border-t border-border mt-8 pt-8">
-          <div className="flex flex-col md:flex-row items-center justify-between">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-muted-foreground text-sm">
               © {currentYear} <span className="text-primary">{SITE_NAME}</span>. All rights reserved.
             </p>
-            <p className="text-muted-foreground text-sm mt-2 md:mt-0">
-              Built with NextJS, TypeScript & Tailwind CSS
+            
+            {/* Privacy-friendly analytics disclosure */}
+            <div className="flex items-center gap-2 text-muted-foreground text-xs">
+              <Shield className="w-3 h-3" />
+              <span>Privacy-friendly analytics • No cookies • DNT respected</span>
+            </div>
+
+            <p className="text-muted-foreground text-sm">
+              Built with React, TypeScript & Tailwind CSS
             </p>
           </div>
         </div>
