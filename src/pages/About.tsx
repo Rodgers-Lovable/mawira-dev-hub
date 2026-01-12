@@ -111,8 +111,7 @@ const About = () => {
                   <h3 className="text-xl font-inter font-semibold mb-3">Backend Development</h3>
                   <ul className="text-muted-foreground space-y-2">
                     <li>• Node.js & Express</li>
-                    <li>• Python & Django</li>
-                    <li>• REST & GraphQL APIs</li>
+                    <li>• REST APIs</li>
                     <li>• Database Design & Optimization</li>
                   </ul>
                 </CardContent>
@@ -137,7 +136,8 @@ const About = () => {
                   <h3 className="text-xl font-inter font-semibold mb-3">Frontend Development</h3>
                   <ul className="text-muted-foreground space-y-2">
                     <li>• React & TypeScript</li>
-                    <li>• Vue.js & Nuxt</li>
+                    <li>• Vue.js</li>
+                    <li>• React.js & Next</li>
                     <li>• Responsive Design</li>
                     <li>• Performance Optimization</li>
                   </ul>
