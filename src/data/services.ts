@@ -12,52 +12,118 @@ export const services: Service[] = [
   {
     id: "api-development",
     title: "API Development & Integration",
-    description: "Build robust, scalable REST and GraphQL APIs with proper authentication, documentation, and testing. Perfect for connecting your applications and services.",
-    keywords: ["REST API", "GraphQL", "Node.js", "authentication", "documentation"],
+    description:
+      "Build robust, scalable REST and GraphQL APIs with proper authentication, documentation, and testing. Designed for high-performance systems and seamless integrations between services.",
+    keywords: [
+      "REST API",
+      "GraphQL",
+      "Node.js",
+      "TypeScript",
+      "authentication",
+      "documentation",
+    ],
     icon: "🔌",
-    pricing: "From $800",
-    image: "/src/assets/api-development-icon.jpg"
+    image: "",
   },
+
   {
-    id: "mobile-apps",
-    title: "Mobile App Development",
-    description: "Cross-platform mobile applications using Flutter that work seamlessly on iOS and Android. Offline-first architecture with beautiful, native-feeling UI.",
-    keywords: ["Flutter", "cross-platform", "iOS", "Android", "offline-first"],
+    id: "backend-systems",
+    title: "Backend Systems Architecture",
+    description:
+      "Design and build scalable backend systems capable of handling high traffic, large datasets, and complex business logic with strong focus on performance and reliability.",
+    keywords: [
+      "Node.js",
+      "system design",
+      "scalability",
+      "databases",
+      "microservices",
+    ],
+    icon: "⚙️",
+    image: "",
+  },
+
+  {
+    id: "mobile-development",
+    title: "Flutter Mobile App Development",
+    description:
+      "Develop cross-platform mobile applications with offline-first capabilities, clean architecture, and smooth user experience tailored for real-world field usage.",
+    keywords: ["Flutter", "Dart", "GetX", "offline-first", "mobile apps"],
     icon: "📱",
-    pricing: "From $1,200",
-    image: "/src/assets/mobile-development-icon.jpg"
+    image: "",
   },
+
   {
-    id: "web-applications",
-    title: "Web Application Development",
-    description: "Modern, responsive web applications using React, Vue.js, or vanilla JavaScript. Focus on performance, SEO, and user experience.",
-    keywords: ["React", "Vue.js", "responsive design", "SEO", "performance"],
+    id: "devops-deployment",
+    title: "DevOps & Cloud Deployment",
+    description:
+      "Deploy and manage applications on cloud infrastructure with CI/CD, Docker, VPS setup, SSL configuration, and performance optimization.",
+    keywords: [
+      "Docker",
+      "DigitalOcean",
+      "Nginx",
+      "CI/CD",
+      "Linux",
+      "Cloudflare",
+    ],
+    icon: "☁️",
+    image: "",
+  },
+
+  {
+    id: "wordpress-development",
+    title: "WordPress Development & Optimization",
+    description:
+      "Build and customize WordPress websites with performance tuning, SEO optimization, and secure hosting configurations.",
+    keywords: [
+      "WordPress",
+      "SEO",
+      "themes",
+      "plugins",
+      "performance optimization",
+    ],
     icon: "🌐",
-    pricing: "From $600",
-    image: "/src/assets/web-development-icon.jpg"
+    image: "",
   },
+
   {
-    id: "database-design",
-    title: "Database Design & Optimization",
-    description: "Design efficient database schemas, optimize queries, and implement proper indexing strategies for MySQL, PostgreSQL, and MongoDB.",
-    keywords: ["database design", "MySQL", "PostgreSQL", "MongoDB", "optimization"],
-    icon: "🗄️",
-    pricing: "From $400"
+    id: "data-engineering",
+    title: "Data Engineering & Pipelines",
+    description:
+      "Design data pipelines for syncing, transforming, and analyzing large datasets across different databases and systems.",
+    keywords: [
+      "ETL",
+      "MongoDB",
+      "PostgreSQL",
+      "data pipelines",
+      "event-driven systems",
+    ],
+    icon: "📊",
+    image: "",
   },
+
   {
-    id: "consulting",
-    title: "Technical Consulting",
-    description: "Architecture reviews, technology stack selection, code reviews, and strategic technical guidance for your development projects.",
-    keywords: ["architecture", "code review", "technical strategy", "consulting"],
-    icon: "🧠",
-    pricing: "From $100/hour"
+    id: "ui-ux-web-development",
+    title: "UI/UX & Web Development",
+    description:
+      "Create modern, responsive websites with strong focus on user experience, branding, and conversion-focused design.",
+    keywords: ["UI/UX", "web design", "responsive design", "branding", "SEO"],
+    icon: "🎨",
+    image: "",
   },
+
   {
-    id: "maintenance",
-    title: "Application Maintenance",
-    description: "Ongoing support, bug fixes, security updates, and feature enhancements for existing applications. Keep your systems running smoothly.",
-    keywords: ["maintenance", "bug fixes", "security updates", "support"],
-    icon: "🔧",
-    pricing: "From $300/month"
-  }
+    id: "automation-tools",
+    title: "Automation & Custom Tools",
+    description:
+      "Build custom automation tools, scripts, and workflow systems to reduce manual work and improve operational efficiency.",
+    keywords: [
+      "automation",
+      "scripts",
+      "Node.js",
+      "workflows",
+      "productivity tools",
+    ],
+    icon: "🤖",
+    image: "",
+  },
 ];
